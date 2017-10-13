@@ -6,7 +6,5 @@ This program sends your IP to a txt file on your FTP
 Creates a user.id file by formatting like this:
 
 host
-
 username
-
 password
