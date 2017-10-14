@@ -20,7 +20,7 @@ INC_DIR		=	./includes/
 SRC_DIR		=	./srcs/
 OBJ_DIR		=	./objs/
 LIB_DIR		=	./libft/
-SRC_NAME	=	main.c
+SRC_NAME	=	main.c get_theinfo.c
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_NAME))
 OBJ			=	$(addprefix $(OBJ_DIR), $(SRC_NAME:.c=.o))
 INCLUDES	=	-I $(LIB_DIR) -I $(INC_DIR)

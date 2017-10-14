@@ -6,64 +6,40 @@
 /*   By: bvelluet <bvelluet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 18:22:20 by bvelluet          #+#    #+#             */
-/*   Updated: 2017/10/13 23:44:40 by bvelluet         ###   ########.fr       */
+/*   Updated: 2017/10/14 19:24:30 by bvelluet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/what_ismyIP.h"
 
-static char		*recupIP(char *str)
-{
-	int			c;
-	FILE		*sortie = popen("curl ifconfig.me", "r");
-	int			i;
-
-	i = 0;
-	if(!sortie)
-		ft_error("Unable to recover IP");
-	while ((c = fgetc(sortie)) != EOF)
-	{
-		str[i] = c;
-		i++;
-	}
-	pclose(sortie);
-	return (str);
-}
-
-static char		*recupid(char *command)
+static void		changefile(char *ip)
 {
 	int			fd;
-	char		*host;
-	char		*user;
-	char		*pass;
 
-	if ((fd = open("./users.id", O_RDONLY)) == -1)
-		ft_error("Missing users.id file");
-	if (!get_next_line(fd, &host))
-		ft_error("Missing host in users.id");
-	if (!get_next_line(fd, &user))
-		ft_error("Missing user in users.id");
-	if (!get_next_line(fd, &pass))
-		ft_error("Missing password in users.id");
-	command = ft_strnew(20 + ft_strlen(host) + ft_strlen(user) + ft_strlen(pass));
-	command = ft_strcat(command, "curl -u ");
-	command = ft_strcat(command, user);
-	command = ft_strcat(command, ":");
-	command = ft_strcat(command, pass);
-	command = ft_strcat(command, " -T ip.txt ");
-	command = ft_strcat(command, host);
-	return (command);
+	system("rm -f ip.txt && touch ip.txt");
+	if ((fd = open("./ip.txt", O_WRONLY)) == -1)
+		ft_error("Missing ip.txt file");
+	ft_putstr_fd(ip, fd);
+	if (close(fd) == -1)
+		ft_error("Closing the file ip.txt");
+	free(ip);
 }
 
 int				main(void)
 {
-	char	*ip;
+	char	*newip;
 	char	*command;
+	char	*ip;
 
-	ip = ft_memalloc(17);
+	newip = ft_memalloc(16);
+	ip = recupIP();
 	command = NULL;
-	ip = recupIP(ip);
-	command = recupid(command);
-	system(command);
+	newip = recupnewIP(newip);
+	if (ft_strcmp(ip, newip))
+	{
+		changefile(newip);
+		command = recupid(command);
+		system(command);
+	}
 	return (0);
 }
