@@ -1,7 +1,5 @@
 # What_ismyIP
-This program will check your ip and check if it has changed, if that is the case then it changes the IP.txt
-This program sends your IP to a txt file on your FTP
-
+This program will check your ip. If it has changed it will one day put on your ftp server.
 
 Creates a user.id file by formatting like this:
 
