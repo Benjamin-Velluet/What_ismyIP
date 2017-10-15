@@ -7,6 +7,8 @@ Creates a user.id file by formatting like this:
 
 host
 
+path
+
 username
 
 password

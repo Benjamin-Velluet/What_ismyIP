@@ -6,7 +6,7 @@
 /*   By: bvelluet <bvelluet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 18:19:55 by bvelluet          #+#    #+#             */
-/*   Updated: 2017/10/14 19:16:37 by bvelluet         ###   ########.fr       */
+/*   Updated: 2017/10/15 18:13:02 by bvelluet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../libft/include/libft.h"
 
 char	*recupid(char *command);
-char	*recupIP(void);
-char	*recupnewIP(char *tmp);
+char	*recupip(void);
+char	*recupnewip(char *tmp);
 
 #endif

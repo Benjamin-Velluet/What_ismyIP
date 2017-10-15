@@ -6,7 +6,7 @@
 /*   By: bvelluet <bvelluet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 18:22:20 by bvelluet          #+#    #+#             */
-/*   Updated: 2017/10/14 19:24:30 by bvelluet         ###   ########.fr       */
+/*   Updated: 2017/10/15 18:13:01 by bvelluet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int				main(void)
 	char	*ip;
 
 	newip = ft_memalloc(16);
-	ip = recupIP();
+	ip = recupip();
 	command = NULL;
-	newip = recupnewIP(newip);
+	newip = recupnewip(newip);
 	if (ft_strcmp(ip, newip))
 	{
 		changefile(newip);
